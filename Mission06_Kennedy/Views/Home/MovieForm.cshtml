@@ -1,0 +1,77 @@
+﻿@model Mission06_Kennedy.Models.Movie
+
+@{
+    ViewData["Title"] = "Movie Entry Form";
+}
+
+<div class="text-center">
+    <h1>Add a Movie to Joel's Collection</h1>
+</div>
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        @* This form sends data back to the Controller using a POST method *@
+        <form method="post">
+
+            @* Category - Required *@
+            <div class="mb-3">
+                <label asp-for="Category" class="form-label">Category</label>
+                <input asp-for="Category" class="form-control" required />
+            </div>
+
+            @* Title - Required *@
+            <div class="mb-3">
+                <label asp-for="Title" class="form-label">Title</label>
+                <input asp-for="Title" class="form-control" required />
+            </div>
+
+            @* Year - Required *@
+            <div class="mb-3">
+                <label asp-for="Year" class="form-label">Year</label>
+                <input asp-for="Year" class="form-control" required />
+            </div>
+
+            @* Director - Required *@
+            <div class="mb-3">
+                <label asp-for="Director" class="form-label">Director</label>
+                <input asp-for="Director" class="form-control" required />
+            </div>
+
+            @* Rating Dropdown - Required (Rubric: Use a dropdown menu) *@
+            <div class="mb-3">
+                <label asp-for="Rating" class="form-label">Rating</label>
+                <select asp-for="Rating" class="form-control" required>
+                    <option value="">Select a Rating</option>
+                    <option value="G">G</option>
+                    <option value="PG">PG</option>
+                    <option value="PG-13">PG-13</option>
+                    <option value="R">R</option>
+                </select>
+            </div>
+
+            @* Edited - Not Required (Rubric: Yes/No option) *@
+            <div class="mb-3">
+                <label asp-for="Edited" class="form-label">Edited</label>
+                <select asp-for="Edited" class="form-control">
+                    <option value="false">No</option>
+                    <option value="true">Yes</option>
+                </select>
+            </div>
+
+            @* Lent To - Not Required *@
+            <div class="mb-3">
+                <label asp-for="LentTo" class="form-label">Lent To</label>
+                <input asp-for="LentTo" class="form-control" />
+            </div>
+
+            @* Notes - Not Required (Rubric: Limit to 25 characters) *@
+            <div class="mb-3">
+                <label asp-for="Notes" class="form-label">Notes</label>
+                <input asp-for="Notes" class="form-control" maxlength="25" />
+                <small class="text-muted">Max 25 characters.</small>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Movie</button>
+        </form>
+    </div>
+</div>

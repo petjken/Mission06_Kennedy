@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Mission06_LastName.Models
+namespace Mission06_Kennedy.Models
 {
     public sealed class Movie
     {

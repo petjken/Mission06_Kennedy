@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Mission06_LastName.Models;
+using Mission06_Kennedy.Models;
 
 namespace Mission06_Kennedy.Models
 {

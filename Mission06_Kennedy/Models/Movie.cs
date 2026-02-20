@@ -1,33 +1,35 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Mission06_Kennedy.Models
 {
-    public sealed class Movie
+    public class Movie
     {
         [Key]
         [Required]
-        public int MovieId { get; set; } // Primary Key
+        public int MovieId { get; set; }
 
-        [Required]
-        public string Category { get; set; }
+        [ForeignKey("CategoryId")]
+        public int? CategoryId { get; set; }
+        public Category? Category { get; set; }
 
-        [Required]
-        public string Title { get; set; }
+        [Required(ErrorMessage = "Title is required")]
+        public string? Title { get; set; }
 
-        [Required]
-        public int Year { get; set; }
+        [Required(ErrorMessage = "Year is required")]
+        [Range(1888, int.MaxValue, ErrorMessage = "Year must be 1888 or later")]
+        public int? Year { get; set; }
 
-        [Required]
-        public string Director { get; set; }
+        public string? Director { get; set; }
+        public string? Rating { get; set; }
 
-        [Required]
-        public string Rating { get; set; } // We will use a dropdown for this later
+        [Required(ErrorMessage = "Edited is required")]
+        public bool? Edited { get; set; }
 
-        public bool? Edited { get; set; } // Optional (Nullable bool)
+        public string? LentTo { get; set; }
+        public string? Notes { get; set; }
 
-        public string? LentTo { get; set; } // Optional
-
-        [MaxLength(25)]
-        public string? Notes { get; set; } // Optional & Limited to 25 chars
+        [Required(ErrorMessage = "Copied to Plex is required")]
+        public bool? CopiedToPlex { get; set; }
     }
 }

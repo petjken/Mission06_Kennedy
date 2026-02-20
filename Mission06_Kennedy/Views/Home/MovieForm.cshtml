@@ -12,13 +12,19 @@
     <div class="col-md-6 offset-md-3">
         @* This form sends data back to the Controller using a POST method *@
         <form method="post">
+            <input type="hidden" asp-for="MovieId" />
 
             @* Category - Required *@
-            <div class="mb-3">
-                <label asp-for="Category" class="form-label">Category</label>
-                <input asp-for="Category" class="form-control" required />
+            <div class="form-group mb-3">
+                <label asp-for="CategoryId">Category:</label>
+                <select asp-for="CategoryId" class="form-control">
+                    <option value="">Select a Category</option>
+                    @foreach (Category c in ViewBag.Categories)
+                    {
+                        <option value="@c.CategoryId">@c.CategoryName</option>
+                    }
+                </select>
             </div>
-
             @* Title - Required *@
             <div class="mb-3">
                 <label asp-for="Title" class="form-label">Title</label>
@@ -70,7 +76,14 @@
                 <input asp-for="Notes" class="form-control" maxlength="25" />
                 <small class="text-muted">Max 25 characters.</small>
             </div>
-
+            @* Copied to Plex - Required *@
+            <div class="mb-3">
+                <label asp-for="CopiedToPlex" class="form-label">Copied To Plex</label>
+                <select asp-for="CopiedToPlex" class="form-control">
+                    <option value="false">No</option>
+                    <option value="true">Yes</option>
+                </select>
+            </div>
             <button type="submit" class="btn btn-primary">Add Movie</button>
         </form>
     </div>

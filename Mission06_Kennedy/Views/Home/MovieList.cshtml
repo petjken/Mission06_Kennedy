@@ -1,0 +1,47 @@
+﻿@model List<Mission06_Kennedy.Models.Movie>
+
+@{
+    ViewData["Title"] = "Joel's Movie Collection";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Joel Hilton's Movie Collection</h2>
+
+    <table class="table table-bordered table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Category</th>
+                <th>Title</th>
+                <th>Year</th>
+                <th>Director</th>
+                <th>Rating</th>
+                <th>Edited</th>
+                <th>Lent To</th>
+                <th>Notes</th>
+                <th>Copied To Plex</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td>@x.Category?.CategoryName</td>
+                    <td>@x.Title</td>
+                    <td>@x.Year</td>
+                    <td>@x.Director</td>
+                    <td>@x.Rating</td>
+                    <td>@(x.Edited == true ? "Yes" : "No")</td>
+                    <td>@x.LentTo</td>
+                    <td>@x.Notes</td>
+                    <td>@(x.CopiedToPlex == true ? "Yes" : "No")</td>
+
+                    <td>
+                        <a class="btn btn-warning btn-sm" asp-controller="Home" asp-action="Edit" asp-route-id="@x.MovieId">Edit</a>
+                        <a class="btn btn-danger btn-sm" asp-controller="Home" asp-action="Delete" asp-route-id="@x.MovieId">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

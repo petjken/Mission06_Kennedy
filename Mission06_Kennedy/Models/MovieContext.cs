@@ -13,5 +13,6 @@ namespace Mission06_Kennedy.Models
 
         // This creates a "Movies" table in the database based on your Movie.cs model
         public DbSet<Movie> Movies { get; set; }
-    }
+        public DbSet<Category> Categories { get; set; }
+        }
 }

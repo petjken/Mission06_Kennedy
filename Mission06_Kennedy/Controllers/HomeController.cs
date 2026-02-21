@@ -73,5 +73,26 @@ namespace Mission06_Kennedy.Controllers
 
             return View(response); // If something is wrong, stay on the form
         }
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            // Find the specific movie they clicked on
+            var recordToDelete = _context.Movies.Single(x => x.MovieId == id);
+
+            // Pass that specific movie to the Delete confirmation view
+            return View(recordToDelete);
+        }
+        [HttpPost]
+        public IActionResult Delete(Movie movieToDelete)
+        {
+            // Tell the database context to remove this specific record
+            _context.Movies.Remove(movieToDelete);
+
+            // Save the changes permanently
+            _context.SaveChanges();
+
+            // Send them back to the list of movies to see it's gone
+            return RedirectToAction("MovieList");
+        }
     }
 }
